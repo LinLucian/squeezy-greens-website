@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squeezy Greens | Vitamin Supplement for Children</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        nav a:hover {
+            background-color: #4caf50;
+        }
+        .section {
+            display: none;
+            padding: 2rem;
+        }
+        .active {
+            display: block;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Squeezy Greens</h1>
+        <p>Vitamin Supplement for Children</p>
+    </header>
+    <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('about')">About</a>
+        <a href="#" onclick="showSection('products')">Products</a>
+        <a href="#" onclick="showSection('how-it-works')">How it Works</a>
+        <a href="#" onclick="showSection('testimonials')">Testimonials</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+    </nav>
+    <div id="home" class="section active">
+        <h2>Welcome to Squeezy Greens</h2>
+        <p>Our mission is to provide parents of young children a healthy, convenient, and engaging liquid additive that keeps children healthy by providing them essential vitamins and nutrients.</p>
+    </div>
+    <div id="about" class="section">
+        <h2>About Us</h2>
+        <p>Team info here...</p>
+    </div>
+    <div id="products" class="section">
+        <h2>Our Products</h2>
+        <p>Green</p>
+        <p>Red</p>
+        <p>Purple</p>
+        <p>Orange</p>
+    </div>
+    <div id="how-it-works" class="section">
+        <h2>How it Works</h2>
+        <p>Just add our product to one glass of water, mix, and drink away!</p>
+    </div>
+    <div id="testimonials" class="section">
+        <h2>Testimonials</h2>
+        <p>Wow this is so good lol</p>
+    </div>
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out to us with any questions about our products at xyz@lehigh.edu</p>
+    </div>
+    <footer>
+        <p>&copy; 2023 Squeezy Greens. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.getElementsByClassName('section');
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+            const targetSection = document.getElementById(sectionId);
+            targetSection.classList.add('active');
+        }
+    </script>
+</body>
+</html>
