@@ -9,6 +9,9 @@
             font-family: Arial, sans-serif;
             line-height: 1.6;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set the minimum height to the full viewport height */
         }
         header {
             background-color: #4caf50;
@@ -36,12 +39,19 @@
         .active {
             display: block;
         }
+        .main-content {
+            flex-grow: 1; /* Allow the main content area to grow and push the footer to the bottom */
+        }
         footer {
             background-color: #333;
             color: white;
             text-align: center;
             padding: 1rem;
             margin-top: 2rem;
+        }
+        .homepage-image {
+            max-width: 50%; /* Adjust this value to control the maximum width of the image */
+            height: auto; /* This value ensures the aspect ratio is maintained while resizing */
         }
     </style>
 </head>
@@ -58,32 +68,92 @@
         <a href="#" onclick="showSection('testimonials')">Testimonials</a>
         <a href="#" onclick="showSection('contact')">Contact</a>
     </nav>
-    <div id="home" class="section active">
-        <h2>Welcome to Squeezy Greens</h2>
-        <p>Our mission is to provide parents of young children a healthy, convenient, and engaging liquid additive that keeps children healthy by providing them essential vitamins and nutrients.</p>
-    </div>
-    <div id="about" class="section">
-        <h2>About Us</h2>
-        <p>Team info here...</p>
-    </div>
-    <div id="products" class="section">
-        <h2>Our Products</h2>
-        <p>Green</p>
-        <p>Red</p>
-        <p>Purple</p>
-        <p>Orange</p>
-    </div>
-    <div id="how-it-works" class="section">
-        <h2>How it Works</h2>
-        <p>Just add our product to one glass of water, mix, and drink away!</p>
-    </div>
-    <div id="testimonials" class="section">
-        <h2>Testimonials</h2>
-        <p>Wow this is so good lol</p>
-    </div>
-    <div id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>Feel free to reach out to us with any questions about our products at xyz@lehigh.edu</p>
+    <div class="main-content">
+        <div id="home" class="section active">
+            <h2>Welcome to Squeezy Greens</h2>
+            <p>Our mission is to provide parents of young children a healthy, convenient, and engaging liquid additive that keeps children healthy by providing them essential vitamins and nutrients.</p>
+            <img class="homepage-image" src="images/OctoLineUp.png" alt="The 3 Flavors!">
+        </div>
+        <div id="about" class="section">
+            <h2>About Us</h2>
+            <img src="images/Ella.png" alt="Ella Varano">
+            <p>Ella Varano: Product Design @ Lehigh '25</p>
+            <p> </p>
+            <img src="images/Maddie.png" alt="Maddison Banks">
+            <p>Maddison Banks: Economics @ Lehigh '24</p>
+            <p> </p>
+            <img src="images/Lucian.png" alt="Lucian Lin">
+            <p>Lucian Lin: CSB @ Lehigh '23</p>
+            <p> </p>
+            <img src="images/Rish.png" alt="Rish Kumar">
+            <p>Rish Kumar: CSB @ Lehigh '24</p>
+            <p> </p>
+            <img src="images/Stephanie.png" alt="Stephanie Murphy">
+            <p>Stephanie Murphy: CSB @ Lehigh '23</p>
+        </div>
+        <div id="products" class="section">
+            <h2>Our Products</h2>
+            <p>Our product comes in three flavors: Apple, Orange, and Grape. Each flavor contains a different set of vitamins and nutrients.</p>
+            <img class="homepage-image" src="images/back_nutrition.png">
+        </div>
+        <div id="how-it-works" class="section">
+            <h2>How it Works</h2>
+            <p>Just add our product to one glass of water, mix, and drink away!</p>
+            <img class="homepage-image" src="images/over cup.png">
+        </div>
+        <div id="testimonials" class="section">
+            <h2>Testimonials</h2>
+            <p>"My kids love Squeezy Greens! It's a great way to get them to take their vitamins." - Jane</p>
+<p></p>
+<p>"Squeezy Greens has become a daily staple in our household. My kids ask for it every morning!" - Mark</p>
+<p></p>
+<p>"Finally, a vitamin supplement that my kids enjoy and is easy to prepare!" - Sarah</p>
+<p></p>
+<p>"I love how convenient and mess-free Squeezy Greens is. Highly recommend it!" - Emily</p>
+<p></p>
+<p>"Squeezy Greens has made our mornings so much easier. My kids are getting the nutrients they need." - Michael</p>
+<p></p>
+<p>"Both the taste and the quality of Squeezy Greens are amazing. My kids can't get enough." - Laura</p>
+<p></p>
+<p>"Squeezy Greens is a game-changer for our family. No more struggles with vitamins!" - Steve</p>
+<p></p>
+<p>"I was skeptical at first, but now I see the difference in my kids' energy levels. Thank you, Squeezy Greens!" - Karen</p>
+<p></p>
+<p>"My children have become more active and healthier since starting Squeezy Greens. It's a fantastic product!" - David</p>
+<p></p>
+<p>"We've tried several vitamin supplements, and Squeezy Greens is by far the best one. My kids love it!" - Jessica</p>
+<p></p>
+<p>"As a parent, it's important to me that my kids get the nutrients they need. Squeezy Greens makes that so much easier!" - Brian</p>
+<p></p>
+<p>"I can't believe how much my kids enjoy taking their vitamins now. Squeezy Greens is a lifesaver!" - Rebecca</p>
+<p></p>
+<p>"Squeezy Greens has made such a positive impact on our family's health. We are grateful for this product!" - Chris</p>
+<p></p>
+<p>"My kids look forward to drinking Squeezy Greens every day. It's a great addition to our routine." - Susan</p>
+<p></p>
+<p>"Not only do my kids love the taste of Squeezy Greens, but I feel good knowing they're getting their vitamins." - Lisa</p>
+<p></p>
+<p>"Squeezy Greens has been a game-changer for our family's health. We won't go a day without it!" - Tom</p>
+<p></p>
+<p>"I appreciate the convenience and ease of Squeezy Greens. It's perfect for busy families!" - Angela</p>
+<p></p>
+<p>"We've seen a noticeable difference in our kids' energy and health since starting Squeezy Greens. Highly recommended!" - Paul</p>
+<p></p>
+<p>"My children are picky eaters, but they love Squeezy Greens. It's a win-win!" - Julie</p>
+<p></p>
+<p>"Squeezy Greens is a fantastic product. It's easy to prepare and my kids love the taste!" - Tony</p>
+<p></p>
+<p>"I'm so glad we discovered Squeezy Greens. It's made a huge difference in our kids' health!" - Michelle</p>
+<p></p>
+<p>"Squeezy Greens is the perfect solution for busy parents who want to ensure their kids get essential vitamins." - Kelly</p>
+<p></p>
+<p>"My kids actually remind me to give them Squeezy Greens every morning. They love it!" - John</p>
+<p></p>
+        </div>
+        <div id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>Feel free to reach out to us with any questions about our products at xyz@lehigh.edu</p>
+        </div>
     </div>
     <footer>
         <p>&copy; 2023 Squeezy Greens. All Rights Reserved.</p>
