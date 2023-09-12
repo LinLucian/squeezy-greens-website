@@ -170,3 +170,95 @@
     </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matrix Digital Rain</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="matrix">
+        <div class="stream">
+            <span class="symbol">I</span>
+            <span class="symbol">N</span>
+            <span class="symbol">N</span>
+            <span class="symbol">O</span>
+            <span class="symbol">V</span>
+            <span class="symbol">A</span>
+            <span class="symbol">T</span>
+            <span class="symbol">I</span>
+            <span class="symbol">O</span>
+            <span class="symbol">N</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+body {
+    background-color: black;
+    margin: 0;
+    overflow: hidden;
+}
+
+.matrix {
+    font-family: "Courier New", monospace;
+    color: green;
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stream {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.symbol {
+    padding: 5px;
+}
+
+
+
+const streams = document.querySelectorAll('.stream');
+
+function createSymbol() {
+    const symbol = document.createElement('span');
+    symbol.textContent = String.fromCharCode(Math.random() * 128);
+    symbol.style.opacity = Math.random();
+    return symbol;
+}
+
+function generateStream() {
+    const stream = document.createElement('div');
+    stream.classList.add('stream');
+    for (let i = 0; i < 30; i++) {
+        stream.appendChild(createSymbol());
+    }
+    return stream;
+}
+
+function updateStreams() {
+    streams.forEach((stream) => {
+        const firstSymbol = stream.querySelector('.symbol');
+        stream.removeChild(firstSymbol);
+        stream.appendChild(createSymbol());
+    });
+}
+
+function startMatrixAnimation() {
+    setInterval(updateStreams, 100);
+}
+
+for (let i = 0; i < 15; i++) {
+    document.querySelector('.matrix').appendChild(generateStream());
+}
+
+startMatrixAnimation();
