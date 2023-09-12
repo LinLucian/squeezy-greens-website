@@ -178,87 +178,56 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="matrix">
-        <div class="stream">
-            <span class="symbol">I</span>
-            <span class="symbol">N</span>
-            <span class="symbol">N</span>
-            <span class="symbol">O</span>
-            <span class="symbol">V</span>
-            <span class="symbol">A</span>
-            <span class="symbol">T</span>
-            <span class="symbol">I</span>
-            <span class="symbol">O</span>
-            <span class="symbol">N</span>
-        </div>
-    </div>
+    <canvas id="matrixCanvas"></canvas>
     <script src="script.js"></script>
 </body>
 </html>
 
+
 body {
-    background-color: black;
     margin: 0;
     overflow: hidden;
-}
-
-.matrix {
-    font-family: "Courier New", monospace;
-    color: green;
-    font-size: 18px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.stream {
-    display: inline-block;
-    white-space: nowrap;
-}
-
-.symbol {
-    padding: 5px;
+    background-color: black;
 }
 
 
+const canvas = document.getElementById("matrixCanvas");
+const ctx = canvas.getContext("2d");
 
-const streams = document.querySelectorAll('.stream');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function createSymbol() {
-    const symbol = document.createElement('span');
-    symbol.textContent = String.fromCharCode(Math.random() * 128);
-    symbol.style.opacity = Math.random();
-    return symbol;
+const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const fontSize = 20;
+const columns = canvas.width / fontSize;
+const drops = [];
+
+for (let i = 0; i < columns; i++) {
+    drops[i] = Math.floor(Math.random() * canvas.height);
 }
 
-function generateStream() {
-    const stream = document.createElement('div');
-    stream.classList.add('stream');
-    for (let i = 0; i < 30; i++) {
-        stream.appendChild(createSymbol());
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#0F0"; // Green color
+    ctx.font = `${fontSize}px monospace`;
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = characters[Math.floor(Math.random() * characters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+
+        drops[i]++;
     }
-    return stream;
 }
 
-function updateStreams() {
-    streams.forEach((stream) => {
-        const firstSymbol = stream.querySelector('.symbol');
-        stream.removeChild(firstSymbol);
-        stream.appendChild(createSymbol());
-    });
+function update() {
+    draw();
+    requestAnimationFrame(update);
 }
 
-function startMatrixAnimation() {
-    setInterval(updateStreams, 100);
-}
-
-for (let i = 0; i < 15; i++) {
-    document.querySelector('.matrix').appendChild(generateStream());
-}
-
-startMatrixAnimation();
+update();
