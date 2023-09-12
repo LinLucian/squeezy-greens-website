@@ -171,70 +171,6 @@
 </body>
 </html>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Matrix Digital Rain</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <canvas id="matrixCanvas"></canvas>
-    <script src="script.js"></script>
-</body>
-</html>
-
-
-body {
-    margin: 0;
-    overflow: hidden;
-    background-color: black;
-}
-
-
-const canvas = document.getElementById("matrixCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-const fontSize = 20;
-const columns = canvas.width / fontSize;
-const drops = [];
-
-for (let i = 0; i < columns; i++) {
-    drops[i] = Math.floor(Math.random() * canvas.height);
-}
-
-function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#0F0"; // Green color
-    ctx.font = `${fontSize}px monospace`;
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = characters[Math.floor(Math.random() * characters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-        }
-
-        drops[i]++;
-    }
-}
-
-function update() {
-    draw();
-    requestAnimationFrame(update);
-}
-
-update();
-
-
-
-
 
 const canvas = document.getElementById("matrixCanvas");
 const ctx = canvas.getContext("2d");
@@ -260,57 +196,14 @@ function draw() {
 
     for (let i = 0; i < drops.length; i++) {
         const word = words[Math.floor(Math.random() * words.length)];
-        ctx.fillText(word, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
+        const wordHeight = word.length * fontSize;
+        
+        for (let j = 0; j < word.length; j++) {
+            const char = word[j];
+            ctx.fillText(char, i * fontSize, (drops[i] + j) * fontSize);
         }
 
-        drops[i]++;
-    }
-}
-
-function update() {
-    draw();
-    requestAnimationFrame(update);
-}
-
-update();
-
-
-
-
-
-
-
-const canvas = document.getElementById("matrixCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const words = ["innovation", "technology", "AI"];
-const fontSize = 20;
-const columns = Math.floor(canvas.width / fontSize);
-const drops = [];
-
-for (let i = 0; i < columns; i++) {
-    drops[i] = Math.floor(Math.random() * canvas.height);
-}
-
-function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = "#0F0"; // Green color
-    ctx.font = `${fontSize}px monospace`;
-
-    for (let i = 0; i < drops.length; i++) {
-        const word = words[Math.floor(Math.random() * words.length)];
-        const text = word.split('').join('\n'); // Split text vertically
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        if ((drops[i] + wordHeight) * fontSize > canvas.height && Math.random() > 0.975) {
             drops[i] = 0;
         }
 
