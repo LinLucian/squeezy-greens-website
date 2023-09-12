@@ -217,3 +217,55 @@ function update() {
 }
 
 update();
+
+
+
+
+
+
+
+const canvas = document.getElementById("matrixCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const words = ["innovation", "technology", "AI"];
+const fontSize = 20;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = [];
+
+for (let i = 0; i < columns; i++) {
+    drops[i] = Math.floor(Math.random() * canvas.height);
+}
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#0F0"; // Green color
+    ctx.font = `${fontSize}px monospace`;
+
+    for (let i = 0; i < drops.length; i++) {
+        const word = words[Math.floor(Math.random() * words.length)];
+        const wordHeight = word.length * fontSize;
+
+        for (let j = 0; j < word.length; j++) {
+            const char = word[j];
+            ctx.fillText(char, i * fontSize, (drops[i] + j) * fontSize);
+        }
+
+        if ((drops[i] + wordHeight) * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = -word.length; // Move word to the top
+        }
+
+        drops[i]++;
+    }
+}
+
+function update() {
+    draw();
+    requestAnimationFrame(update);
+}
+
+update();
