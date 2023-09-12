@@ -324,3 +324,86 @@ function update() {
 }
 
 update();
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="matrix-container">
+        <div class="word-rain"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    color: green;
+    font-size: 24px;
+}
+
+.matrix-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.word-rain {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    animation: wordFall 5s linear infinite;
+}
+
+@keyframes wordFall {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        transform: translateX(-50%) translateY(100vh);
+    }
+}
+
+
+
+
+
+
+const words = ["innovation", "AI", "technology", "creativity"]; // Add more words as needed
+const wordContainer = document.querySelector('.word-rain');
+
+function createWordRain() {
+    for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        for (let j = 0; j < word.length; j++) {
+            const span = document.createElement('span');
+            span.textContent = word[j];
+            span.style.animationDelay = `${i * 1.5}s`; // Adjust the delay for the vertical effect
+            wordContainer.appendChild(span);
+        }
+    }
+}
+
+createWordRain();
+
