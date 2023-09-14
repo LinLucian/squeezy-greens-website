@@ -15,8 +15,6 @@
 </html>
 
 
-
-
 body {
     margin: 0;
     overflow: hidden;
@@ -55,7 +53,7 @@ function createMatrixStream() {
     column.style.fontSize = fontSize + 'px';
     column.textContent = getRandomCharacter();
 
-    document.body.appendChild(column);
+    document.querySelector('.matrix-container').appendChild(column);
 
     setTimeout(() => {
         column.remove();
@@ -79,3 +77,4 @@ function getRandomCharacter() {
 }
 
 setInterval(createMatrixStream, 200);
+
