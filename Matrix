@@ -15,6 +15,7 @@
 </html>
 
 
+
 body {
     margin: 0;
     overflow: hidden;
@@ -40,7 +41,6 @@ body {
 
 
 
-
 const matrixText = document.querySelector('.matrix-text');
 const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -49,7 +49,7 @@ function createMatrixStream() {
     const fontSize = Math.random() * 20 + 10;
     const column = document.createElement('div');
     column.classList.add('matrix-column');
-    column.style.left = Math.random() * 100 + '%';
+    column.style.left = Math.random() * 100 + 'vw';
     column.style.fontSize = fontSize + 'px';
     column.textContent = getRandomCharacter();
 
@@ -60,12 +60,12 @@ function createMatrixStream() {
     }, 15000);
 
     requestAnimationFrame(() => {
-        column.style.top = '100%';
+        column.style.top = '100vh';
         column.style.left = column.getBoundingClientRect().left + 'px';
         column.style.opacity = 1;
 
         requestAnimationFrame(() => {
-            column.style.top = '-100%';
+            column.style.top = '-100px';
             column.style.transition = `top ${speed}s linear, opacity 0.3s ease`;
             column.style.opacity = 0;
         });
@@ -77,4 +77,3 @@ function getRandomCharacter() {
 }
 
 setInterval(createMatrixStream, 200);
-
